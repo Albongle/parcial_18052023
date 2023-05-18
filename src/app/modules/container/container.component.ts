@@ -13,8 +13,6 @@ export class ContainerComponent {
     const container = $event as Container;
 
     this.containers.push(container);
-
-    console.log(this.containers);
   }
 
   public handlerUpdateontainer($event: Event) {

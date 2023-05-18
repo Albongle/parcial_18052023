@@ -33,4 +33,12 @@ export class LoginComponent {
       this.alertService.showAlert({ icon: 'error', message: 'Login No ok' });
     }
   }
+
+  public loginAdmin() {
+    this.userService.login('admin@mail.com', '12345');
+    this.alertService.showAlert({
+      icon: 'success',
+      message: 'Bienvenido Admin',
+    });
+  }
 }

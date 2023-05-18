@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/login.guard';
 import { ProductosListadoPublicoComponent } from './components/productos-listado-publico/productos-listado-publico.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -27,6 +28,14 @@ const routes: Routes = [
   {
     path: 'listadoPublico',
     component: ProductosListadoPublicoComponent,
+  },
+  {
+    path: 'container',
+    loadChildren: () =>
+      import('./modules/container/container.module').then(
+        (m) => m.ContainerModule
+      ),
+    canActivate: [AuthGuard, AdminGuard],
   },
 ];
 

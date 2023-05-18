@@ -1,0 +1,111 @@
+<div class="container-fluid py-4">
+  <div class="row justify-content-evenly align-items-md-stretch">
+    <div class="m-md-3 mt-1 col-md-4">
+      <div class="h-100 p-5 text-bg-dark rounded-3">
+        <h4 class="text-center mb-3">Crear container</h4>
+        <form
+          [formGroup]="frmAltaContainer"
+          class="needs-validation"
+          novalidate
+        >
+          <div class="row g-3 justify-content-evenly">
+            <div class="col-sm-6">
+              <label for="codigo" class="form-label">codigo</label>
+              <input
+                type="text"
+                formControlName="codigo"
+                class="form-control"
+                id="codigo"
+                placeholder="codigo"
+              />
+              <div
+                [hidden]="
+                  frmAltaContainer.controls['codigo'].pristine ||
+                  !frmAltaContainer.controls['codigo'].errors?.['required']
+                "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                codigo es requerido
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="apellido" class="form-label">color</label>
+              <input
+                type="text"
+                name="color"
+                class="form-control"
+                id="color"
+                placeholder="color"
+                formControlName="color"
+              />
+              <div
+                [hidden]="
+                frmAltaContainer.controls['color'].pristine ||
+                !frmAltaContainer.controls['color'].errors?.['required']
+              "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                color es requerido
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="usuario" class="form-label">empresa</label>
+              <div class="input-group has-validation">
+                <input
+                  type="text"
+                  name="empresa"
+                  class="form-control"
+                  id="empresa"
+                  placeholder="empresa"
+                  formControlName="empresa"
+                />
+              </div>
+              <div
+                [hidden]="
+                frmAltaContainer.controls['empresa'].pristine ||
+                !frmAltaContainer.controls['empresa'].errors?.['required']
+              "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                empresa es requerido
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">capacidad</label>
+              <input
+                name="capacidad"
+                type="number"
+                class="form-control"
+                id="capacidad"
+                placeholder="capacidad"
+                formControlName="capacidad"
+              />
+              <div
+                [hidden]="
+                frmAltaContainer.controls['capacidad'].pristine ||
+                !frmAltaContainer.controls['capacidad'].errors?.['required']
+              "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                capacidad es requerido
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="mt-3 w-100 btn btn-primary btn-lg"
+            type="button"
+            (click)="crearContainer()"
+          >
+            Crear
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pt-3 mt-4 text-body-secondary border-top">&copy; 2023</footer>
+</div>

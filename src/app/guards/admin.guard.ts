@@ -11,7 +11,7 @@ import { UserService } from '../services/user.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(private readonly userService: UserService) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -21,6 +21,10 @@ export class AuthGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    return this.userService.estaLogueado;
+    const usuario = this.userService.usuarioActivo();
+    if (usuario.tipo === 'admin') {
+      return true;
+    }
+    return false;
   }
 }

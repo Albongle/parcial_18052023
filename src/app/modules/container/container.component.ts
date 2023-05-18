@@ -7,12 +7,13 @@ import { Container } from 'src/app/models/container.model';
   styleUrls: ['./container.component.scss'],
 })
 export class ContainerComponent {
-  public containers: Container[];
+  public containers: Container[] = [];
   public container: Container;
   public handlerNewContainer($event: Event) {
     const container = $event as Container;
-
-    this.containers.push(container);
+    this.container = container;
+    this.containers.push(this.container);
+    console.log(this.containers);
   }
 
   public handlerUpdateontainer($event: Event) {

@@ -1,0 +1,27 @@
+<ul>
+  <li [ngClass]="'mt-5'" *ngFor="let elemento of listaDeElementos">
+    <ul>
+      <li type="circle" *ngFor="let item of elemento | keyvalue">
+        <ng-template
+          *ngIf="
+            item.key !== 'pais' && item.key !== 'actor';
+            then thenBlock;
+            else elseBlock
+          "
+        ></ng-template>
+        <ng-template #thenBlock>{{ item.key }}: {{ item.value }}</ng-template>
+        <ng-template #elseBlock
+          >{{ item.key }}: {{ item.value | ToString }}
+        </ng-template>
+      </li>
+
+      <input
+        *ngIf="habilitarDetalle"
+        type="button"
+        [ngClass]="'btn btn-outline-success'"
+        [value]="nombreDetalle !== undefined ? nombreDetalle : 'Detalle'"
+        (click)="seleccionarItem(elemento)"
+      />
+    </ul>
+  </li>
+</ul>

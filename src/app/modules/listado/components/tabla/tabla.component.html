@@ -1,0 +1,33 @@
+<table [ngClass]="'table'">
+  <thead>
+    <tr>
+      <th *ngFor="let item of listaDeElementos[0] | keyvalue">
+        {{ item.key }}
+      </th>
+      <th *ngIf="listaDeElementos.length > 0 && habilitarDetalle">Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let elemento of listaDeElementos">
+      <td *ngFor="let item of elemento | keyvalue">
+        <ng-template
+          *ngIf="
+            item.key !== 'pais' && item.key !== 'actor';
+            then thenBlock;
+            else elseBlock
+          "
+        ></ng-template>
+        <ng-template #thenBlock>{{ item.value }}</ng-template>
+        <ng-template #elseBlock>{{ item.value | ToString }} </ng-template>
+      </td>
+      <td *ngIf="habilitarDetalle">
+        <input
+          type="button"
+          [ngClass]="'btn btn-outline-success'"
+          [value]="nombreDetalle !== undefined ? nombreDetalle : 'Detalle'"
+          (click)="seleccionarItem(elemento)"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

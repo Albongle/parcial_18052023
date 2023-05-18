@@ -1,0 +1,45 @@
+<div [ngClass]="'container'">
+  <div [ngClass]="'row justify-content-center w-auto'">
+    <div [ngClass]="'col'">
+      <table *ngIf="listadoPaises" [ngClass]="'table table-borderer'">
+        <thead>
+          <tr>
+            <th
+              [ngClass]="['text-capitalize', 'text-center']"
+              *ngFor="let item of listadoPaises[0] | keyvalue"
+            >
+              {{ item.key }}
+            </th>
+            <th
+              [ngClass]="['text-capitalize', 'text-center']"
+              *ngIf="activarSeleccion"
+            >
+              Accion
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr [ngClass]="'text-center'" *ngFor="let elemento of listadoPaises">
+            <td *ngFor="let item of elemento | keyvalue">
+              <img
+                *ngIf="item.key === 'bandera'; else elseBlock"
+                [ngStyle]="{ width: '32px' }"
+                [src]="item.value"
+                alt=""
+              />
+              <ng-template #elseBlock>{{ item.value }}</ng-template>
+            </td>
+            <td *ngIf="activarSeleccion">
+              <input
+                type="button"
+                [ngClass]="['btn', 'btn-outline-success']"
+                value="Seleccionar"
+                (click)="seleccionarPais(elemento)"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<input
+  *ngIf="config.habilitarAlternarVista"
+  type="button"
+  [ngClass]="'btn btn-outline-primary'"
+  [value]="'Ver como ' + siguienteVista"
+  (click)="cambiarVista()"
+/>
+
+<div *ngIf="alternarVista; then thenBlock; else elseBlock"></div>
+
+<ng-template #thenBlock>
+  <app-lista
+    [listaDeElementos]="listaDeElementos"
+    [habilitarDetalle]="config.habilitarDetalle"
+    [nombreDetalle]="config.nombreDetalle"
+    (eventEnviarElemento)="seleccionarItem($event)"
+  ></app-lista
+></ng-template>
+
+<ng-template #elseBlock>
+  <app-tabla
+    [listaDeElementos]="listaDeElementos"
+    [nombreDetalle]="config.nombreDetalle"
+    [habilitarDetalle]="config.habilitarDetalle"
+    (eventEnviarElemento)="seleccionarItem($event)"
+  ></app-tabla>
+</ng-template>

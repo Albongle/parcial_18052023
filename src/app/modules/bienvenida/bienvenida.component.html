@@ -1,0 +1,17 @@
+<p>Bienvenida usuario</p>
+
+<ul *ngIf="usuario">
+  <li *ngFor="let item of usuario | keyvalue">
+    <ng-template
+      *ngIf="item.key !== 'avatar_url'; then thenBlock; else elseBlock"
+    ></ng-template>
+    <ng-template #thenBlock>{{ item.key }}: {{ item.value }}</ng-template>
+    <ng-template #elseBlock>
+      <img
+        src="{{ item.value }}"
+        alt="imagen-usuario"
+        [ngStyle]="{ width: '96px', 'border-radius': '100%' }"
+      />
+    </ng-template>
+  </li>
+</ul>

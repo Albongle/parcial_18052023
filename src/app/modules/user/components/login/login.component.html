@@ -1,0 +1,64 @@
+<p>login works!</p>
+
+<div class="p-3 h-100 row justify-content-center align-items-center">
+  <form
+    [formGroup]="formLogin"
+    (ngSubmit)="login()"
+    class="bg-light shadow p-1 m-1 rounded col-xxl-3 col-lg-4 col-md-6 col-sm-8"
+  >
+    <div class="row p-2 m-2 justify-content-center align-items-center">
+      <input
+        type="text"
+        class="m-3 form-control"
+        name="email"
+        placeholder="Email Address"
+        formControlName="email"
+        autofocus=""
+      />
+      <div
+        [hidden]="
+          !formLogin.controls['email'].touched ||
+          !formLogin.controls['email'].errors
+        "
+      >
+        <span
+          *ngIf="formLogin.controls['email'].errors?.['required']"
+          class="mt-2 p-0 shadow text-center form-control alert alert-danger"
+          >Email es requerido</span
+        >
+        <span
+          *ngIf="formLogin.controls['email'].errors?.['email']"
+          class="mt-2 p-0 shadow text-center form-control alert alert-danger"
+          >Email debe ser valido</span
+        >
+      </div>
+      <input
+        type="password"
+        class="m-3 form-control"
+        name="password"
+        placeholder="Password"
+        formControlName="password"
+        autofocus=""
+      />
+
+      <div
+        [hidden]="
+          !formLogin.controls['password'].touched ||
+          !formLogin.controls['password'].errors
+        "
+      >
+        <span
+          class="mt-2 p-0 shadow text-center form-control alert alert-danger"
+          >Password es requerido</span
+        >
+      </div>
+
+      <button
+        class="m-1 btn btn-lg btn-outline-success btn-block"
+        type="submit"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</div>

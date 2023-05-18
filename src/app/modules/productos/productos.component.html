@@ -1,0 +1,145 @@
+<div class="container-fluid py-4">
+  <div class="row justify-content-evenly align-items-md-stretch">
+    <div class="m-md-3 mt-1 col-md-4">
+      <div class="h-100 p-5 text-bg-dark rounded-3">
+        <h4 class="text-center mb-3">Crear actor</h4>
+        <form [formGroup]="frmAltaProducto" class="needs-validation" novalidate>
+          <div class="row g-3 justify-content-evenly">
+            <div class="col-sm-6">
+              <label for="codigo" class="form-label">codigo</label>
+              <input
+                type="text"
+                formControlName="codigo"
+                class="form-control"
+                id="codigo"
+                placeholder="codigo"
+              />
+              <div
+                [hidden]="
+                  frmAltaProducto.controls['codigo'].pristine ||
+                  !frmAltaProducto.controls['codigo'].errors?.['required']
+                "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                codigo es requerido
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="apellido" class="form-label">descripcion</label>
+              <input
+                type="text"
+                name="descripcion"
+                class="form-control"
+                id="descripcion"
+                placeholder="descripcion"
+                formControlName="descripcion"
+              />
+              <div
+                [hidden]="
+                frmAltaProducto.controls['descripcion'].pristine ||
+                !frmAltaProducto.controls['descripcion'].errors?.['required']
+              "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                descripcion es requerido
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="usuario" class="form-label">precio</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <input
+                  type="number"
+                  name="precio"
+                  class="form-control"
+                  id="precio"
+                  placeholder="Username"
+                  formControlName="precio"
+                />
+              </div>
+              <div
+                [hidden]="
+                frmAltaProducto.controls['precio'].pristine ||
+                !frmAltaProducto.controls['precio'].errors?.['required']
+              "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                precio es requerido
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">strock</label>
+              <input
+                name="strock"
+                type="strock"
+                class="form-control"
+                id="strock"
+                placeholder="you@example.com"
+                formControlName="strock"
+              />
+              <div
+                [hidden]="
+                frmAltaProducto.controls['stock'].pristine ||
+                !frmAltaProducto.controls['stock'].errors?.['required']
+              "
+                class="alert alert-danger mt-1 p-1 text-center"
+              >
+                stock es requerido
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="pais" class="text-center form-label">Pais</label>
+              <div
+                *ngIf="pais"
+                id="pais"
+                class="form-control text-center alert alert-success p-1 mt-1"
+              >
+                {{ pais.nombre }}
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="ciudad" class="text-center form-label">Ciudad</label>
+              <div
+                *ngIf="pais"
+                id="ciudad"
+                class="form-control text-center alert alert-success p-1 mt-1"
+              >
+                {{ pais.capital }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div *ngIf="pais" class="mt-2 col-md-6">
+              <img class="w-100" [src]="pais.bandera" alt="bandera" />
+            </div>
+          </div>
+
+          <button
+            class="mt-3 w-100 btn btn-primary btn-lg"
+            type="button"
+            (click)="crearProducto()"
+          >
+            Crear
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="m-md-3 mt-1 col-md-5">
+      <div class="h-100 p-5 bg-body-tertiary rounded-3 text-center">
+        <h2>Paises</h2>
+        <app-tabla-paises
+          [activarSeleccion]="true"
+          (paisSeleccionado)="handlerPais($event)"
+        ></app-tabla-paises>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pt-3 mt-4 text-body-secondary border-top">&copy; 2023</footer>
+</div>

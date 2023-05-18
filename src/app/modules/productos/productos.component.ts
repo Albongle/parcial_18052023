@@ -38,6 +38,8 @@ export class ProductosComponent {
     if (this.frmAltaProducto.valid) {
       this.producto = new Producto({ ...this.frmAltaProducto.value });
 
+      console.log(this.producto);
+
       this.eventNuevoProducto.emit(this.producto);
       this.alertService.showAlert({
         icon: 'success',

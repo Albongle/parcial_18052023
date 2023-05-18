@@ -5,9 +5,21 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductosListadoPublicoComponent } from './components/productos-listado-publico/productos-listado-publico.component';
+import { ListadoModule } from './modules/listado/listado.module';
 @NgModule({
-  declarations: [AppComponent, NavBarComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    NavBarComponent,
+    ProductosListadoPublicoComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ListadoModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

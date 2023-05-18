@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Pais } from 'src/app/models/pais.model';
 import { Producto } from 'src/app/models/producto.model';
 import { AlertService } from 'src/app/services/alert.service';
+import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
   selector: 'app-productos',
@@ -17,7 +18,8 @@ export class ProductosComponent {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly alertService: AlertService
+    private readonly alertService: AlertService,
+    private readonly productoService: ProductoService
   ) {
     this.eventNuevoProducto = new EventEmitter();
     this.frmAltaProducto = this.formBuilder.group({
@@ -39,7 +41,7 @@ export class ProductosComponent {
       this.producto = new Producto({ ...this.frmAltaProducto.value });
 
       console.log(this.producto);
-
+      this.productoService.guardarProdcuto(this.producto);
       this.eventNuevoProducto.emit(this.producto);
       this.alertService.showAlert({
         icon: 'success',

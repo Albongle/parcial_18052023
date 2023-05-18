@@ -21,7 +21,18 @@
       >
       <a class="nav-link text-light" routerLink="/bienvenida">Bienvenida</a>
       <a class="nav-link text-light" routerLink="user/login">Login</a>
-      <a class="nav-link text-light" routerLink="productos">Productos</a>
+      <a
+        *ngIf="userService.estaLogueado"
+        class="nav-link text-danger"
+        routerLink="productos"
+        >Productos</a
+      >
+      <a class="nav-link text-light" routerLink="productos/listado"
+        >Listado Productos</a
+      >
+      <a class="nav-link text-light" routerLink="listadoPublico"
+        >Listado Publico</a
+      >
     </div>
   </div>
   <div class="d-flex">

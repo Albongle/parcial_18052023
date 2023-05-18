@@ -1,0 +1,5 @@
+<app-listado
+  [config]="{ verComo: 'tabla' }"
+  [listaDeElementos]="productosMayorStock()"
+  (eventEnviarElemento)="handlerDetalleItem($event)"
+></app-listado>

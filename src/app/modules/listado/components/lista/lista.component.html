@@ -3,11 +3,7 @@
     <ul>
       <li type="circle" *ngFor="let item of elemento | keyvalue">
         <ng-template
-          *ngIf="
-            item.key !== 'pais' && item.key !== 'actor';
-            then thenBlock;
-            else elseBlock
-          "
+          *ngIf="item.key !== 'pais'; then thenBlock; else elseBlock"
         ></ng-template>
         <ng-template #thenBlock>{{ item.key }}: {{ item.value }}</ng-template>
         <ng-template #elseBlock

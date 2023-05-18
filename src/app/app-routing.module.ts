@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/login.guard';
+import { ProductosListadoPublicoComponent } from './components/productos-listado-publico/productos-listado-publico.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
         (m) => m.ProductosModule
       ),
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'listadoPublico',
+    component: ProductosListadoPublicoComponent,
   },
 ];
 

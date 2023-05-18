@@ -11,11 +11,7 @@
     <tr *ngFor="let elemento of listaDeElementos">
       <td *ngFor="let item of elemento | keyvalue">
         <ng-template
-          *ngIf="
-            item.key !== 'pais' && item.key !== 'actor';
-            then thenBlock;
-            else elseBlock
-          "
+          *ngIf="item.key !== 'pais'; then thenBlock; else elseBlock"
         ></ng-template>
         <ng-template #thenBlock>{{ item.value }}</ng-template>
         <ng-template #elseBlock>{{ item.value | ToString }} </ng-template>
